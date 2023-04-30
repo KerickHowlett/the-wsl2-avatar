@@ -1,11 +1,16 @@
-module github.com/blackreloaded/wsl2-ssh-pageant
+module github.com/blackreloaded/wsl2-ssh-bridge
 
-go 1.13
+go 1.20
 
 require (
-	github.com/Microsoft/go-winio v0.4.14
+	github.com/Microsoft/go-winio v0.6.1
 	github.com/apenwarr/fixconsole v0.0.0-20191012055117-5a9f6489cc29
-	github.com/getlantern/systray v0.0.0-20191219131235-d922a91190d8
-	github.com/lxn/win v0.0.0-20191128105842-2da648fda5b4
-	golang.org/x/sys v0.0.0-20191228213918-04cbcbbfeed8
+	github.com/lxn/win v0.0.0-20210218163916-a377121e959e
+	golang.org/x/sys v0.7.0
+)
+
+require (
+	github.com/apenwarr/w32 v0.0.0-20190407065021-aa00fece76ab // indirect
+	golang.org/x/mod v0.10.0 // indirect
+	golang.org/x/tools v0.8.0 // indirect
 )

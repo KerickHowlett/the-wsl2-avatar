@@ -1,4 +1,4 @@
-# wsl2-ssh-pageant
+# wsl2-ssh-bridge
 
 ## Motivation
 
@@ -10,7 +10,7 @@ to use this key within WSL2.
 
 ### Prerequisite
 
-In order to use `wsl-ssh-pageant` you must have installed `socat` and `ss` on
+In order to use `wsl2-ssh-bridge` you must have installed `socat` and `ss` on
 your machine.
 
 For example, on Ubuntu you can install these by running the following command:
@@ -22,15 +22,15 @@ sudo apt install --yes socat iproute2
 ### Installation
 
 1. Download latest version from
-[release page](https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/latest)
-and copy `wsl2-ssh-pageant.exe` to your windows home directory (or other location
+[release page](https://github.com/BlackReloaded/wsl2-ssh-bridge/releases/latest)
+and copy `wsl2-ssh-bridge.exe` to your windows home directory (or other location
 within the windows file system). Then simlink to your `$HOME/.ssh` directory for
 easy access
 
     ```bash
-    windows_destination="/mnt/c/Users/Public/Downloads/wsl2-ssh-pageant.exe"
-    linux_destination="$HOME/.ssh/wsl2-ssh-pageant.exe"
-    wget -O "$windows_destination" "https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/latest/download/wsl2-ssh-pageant.exe"
+    windows_destination="/mnt/c/Users/Public/Downloads/wsl2-ssh-bridge.exe"
+    linux_destination="$HOME/.ssh/wsl2-ssh-bridge.exe"
+    wget -O "$windows_destination" "https://github.com/BlackReloaded/wsl2-ssh-bridge/releases/latest/download/wsl2-ssh-bridge.exe"
     # Set the executable bit.
     chmod +x "$windows_destination"
     # Symlink to linux for ease of use later
@@ -49,13 +49,13 @@ documentation of your shell.
 export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
 if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
   rm -f "$SSH_AUTH_SOCK"
-  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
-  if test -x "$wsl2_ssh_pageant_bin"; then
-    (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin" >/dev/null 2>&1 &)
+  wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
+  if test -x "$wsl2_ssh_bridge_bin"; then
+    (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin" >/dev/null 2>&1 &)
   else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+    echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
   fi
-  unset wsl2_ssh_pageant_bin
+  unset wsl2_ssh_bridge_bin
 fi
 ```
 
@@ -65,13 +65,13 @@ fi
 export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
 if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
   rm -rf "$GPG_AGENT_SOCK"
-  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
-  if test -x "$wsl2_ssh_pageant_bin"; then
-    (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
+  wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
+  if test -x "$wsl2_ssh_bridge_bin"; then
+    (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
   else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+    echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
   fi
-  unset wsl2_ssh_pageant_bin
+  unset wsl2_ssh_bridge_bin
 fi
 ```
 
@@ -83,13 +83,13 @@ fi
 set -x SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
 if not ss -a | grep -q "$SSH_AUTH_SOCK";
   rm -f "$SSH_AUTH_SOCK"
-  set wsl2_ssh_pageant_bin "$HOME/.ssh/wsl2-ssh-pageant.exe"
-  if test -x "$wsl2_ssh_pageant_bin";
-    setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin" >/dev/null 2>&1 &
+  set wsl2_ssh_bridge_bin "$HOME/.ssh/wsl2-ssh-bridge.exe"
+  if test -x "$wsl2_ssh_bridge_bin";
+    setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin" >/dev/null 2>&1 &
   else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+    echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
   end
-  set --erase wsl2_ssh_pageant_bin
+  set --erase wsl2_ssh_bridge_bin
 end
 ```
 
@@ -99,13 +99,13 @@ end
 set -x GPG_AGENT_SOCK "$HOME/.gnupg/S.gpg-agent"
 if not ss -a | grep -q "$GPG_AGENT_SOCK";
   rm -rf "$GPG_AGENT_SOCK"
-  set wsl2_ssh_pageant_bin "$HOME/.ssh/wsl2-ssh-pageant.exe"
-  if test -x "$wsl2_ssh_pageant_bin";
-    setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin --gpg S.gpg-agent" >/dev/null 2>&1 &
+  set wsl2_ssh_bridge_bin "$HOME/.ssh/wsl2-ssh-bridge.exe"
+  if test -x "$wsl2_ssh_bridge_bin";
+    setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &
   else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+    echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
   end
-  set --erase wsl2_ssh_pageant_bin
+  set --erase wsl2_ssh_bridge_bin
 end
 ```
 
@@ -127,10 +127,10 @@ gpg-connect-agent /bye
 
 ### Agent response times are very slow
 
-If ssh,ssh-add,gpg etc are very slow (~15-25 seconds) check that
-wsl2-ssh-pageant resides on the windows file system. This is due to an issue
-with the WSL interop documented
-[here](https://github.com/BlackReloaded/wsl2-ssh-pageant/issues/24)
+If you find commands like `ssh`, `ssh-add`, or `gpg` are slow (i.e., about
+15-25 seconds) check that `wsl2-ssh-bridge` resides on Windows file system.
+This is due to an issue with the WSL interop documented
+[here](https://github.com/BlackReloaded/wsl2-ssh-bridge/issues/24)
 and [here](https://github.com/microsoft/WSL/issues/7591)
 
 ## Credit
