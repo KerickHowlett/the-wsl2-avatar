@@ -10,7 +10,7 @@ to use this key within WSL2.
 
 ### Prerequisite
 
-In order to use `wsl-ssh-pageant` you must have installed `socat` and `ss` on
+In order to use `wsl2-ssh-bridge` you must have installed `socat` and `ss` on
 your machine.
 
 For example, on Ubuntu you can install these by running the following command:
