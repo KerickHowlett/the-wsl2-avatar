@@ -22,7 +22,7 @@ sudo apt install --yes socat iproute2
 ### Installation
 
 1. Download latest version from
-[release page](https://github.com/BlackReloaded/wsl2-ssh-bridge/releases/latest)
+[release page](https://github.com/KerickHowlett/wsl2-ssh-bridge/releases/latest)
 and copy `wsl2-ssh-bridge.exe` to your windows home directory (or other location
 within the windows file system). Then simlink to your `$HOME/.ssh` directory for
 easy access
@@ -30,7 +30,7 @@ easy access
     ```bash
     windows_destination="/mnt/c/Users/Public/Downloads/wsl2-ssh-bridge.exe"
     linux_destination="$HOME/.ssh/wsl2-ssh-bridge.exe"
-    wget -O "$windows_destination" "https://github.com/BlackReloaded/wsl2-ssh-bridge/releases/latest/download/wsl2-ssh-bridge.exe"
+    wget -O "$windows_destination" "https://github.com/KerickHowlett/wsl2-ssh-bridge/releases/latest/download/wsl2-ssh-bridge.exe"
     # Set the executable bit.
     chmod +x "$windows_destination"
     # Symlink to linux for ease of use later
