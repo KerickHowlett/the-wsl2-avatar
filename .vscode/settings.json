@@ -1,12 +1,63 @@
 {
+	"[go.mod]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[go]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+		"editor.quickSuggestions": {
+			"comments": "on",
+			"other": "on",
+			"strings": "on"
+		},
+		"editor.wordWrap": "off",
+		"files.trimTrailingWhitespace": false
+	},
+	"cSpell.enabled": true,
+	"cSpell.spellCheckOnlyWorkspaceFiles": true,
     "cSpell.words": [
+		"apenwarr",
+		"Basepath",
         "benpye",
+		"COPYDATA",
+		"fixconsole",
+		"hwnd",
+		"killagent",
+		"logfile",
         "nohup",
         "setsid",
         "simlink",
         "socat",
+		"winio",
         "Yubico's",
-        "Yubikey",
-        "killagent",
-    ]
+		"Yubikey"
+	],
+	"editor.formatOnSave": true,
+	"go.autocompleteUnimportedPackages": true,
+	"go.formatTool": "goformat",
+	"go.toolsManagement.autoUpdate": true,
+	"go.useLanguageServer": true,
+	"go.vetFlags": [
+		"-unsafeptr=false"
+	],
+	"gopls": {
+		"analyses": {
+			"unsafeptr": false
+		}
+	},
+	"markdownlint.config": {
+		"line-length": {
+			"code_blocks": false,
+			"tables": false
+		},
+		"no-duplicate-heading": {
+			"siblings_only": true
+		},
+		"no-trailing-punctuation": {
+			"punctuation": ".,;:!。，；：！？"
+		}
+	},
+	"markdownlint.run": "onSave"
 }

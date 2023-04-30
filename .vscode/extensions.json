@@ -1,9 +1,12 @@
 {
     "recommendations": [
-        "ms-vscode.makefile-tools",
-        "yzhang.markdown-all-in-one",
-        "davidanson.vscode-markdownlint",
-        "streetsidesoftware.code-spell-checker",
-        "golang.go"
-    ]
+		"bierner.markdown-emoji",
+		"bierner.markdown-preview-github-styles",
+		"davidanson.vscode-markdownlint",
+		"editorconfig.editorconfig",
+		"golang.go",
+		"ms-vscode.makefile-tools",
+		"streetsidesoftware.code-spell-checker",
+		"yzhang.markdown-all-in-one",
+	]
 }
