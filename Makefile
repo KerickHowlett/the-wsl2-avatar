@@ -1,9 +1,12 @@
+all: build install listen
 
 build:
-	GOOS=windows go build -o wsl2-ssh-pageant.exe -ldflags -H=windowsgui main.go
+	GOOS=windows go build -o wsl2-ssh-bridge.exe -ldflags -H=windowsgui main.go
 
 install: build
-	mv wsl2-ssh-pageant.exe ~/.ssh/
+	SSH_PATH := "${env:USERPROFILE}/.ssh/"
+	mkdir -p $(SSH_PATH)
+	mv wsl2-ssh-bridge.exe $(SSH_PATH)
 
 listen: build
-	socat UNIX-LISTEN:ssh.sock,fork EXEC:./wsl2-ssh-pageant.exe
+	socat UNIX-LISTEN:ssh.sock,fork EXEC:./wsl2-ssh-bridge.exe

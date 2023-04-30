@@ -24,12 +24,12 @@ import (
 )
 
 const (
-	// Windows constats
+	// Windows
 	invalidHandleValue = ^windows.Handle(0)
 	pageReadWrite      = 0x4
 	fileMapWrite       = 0x2
 
-	// ssh-agent/Pageant constants
+	// ssh-agent/pageant
 	agentMaxMessageLength = 8192
 	agentCopyDataID       = 0x804e50ba
 )
@@ -73,7 +73,7 @@ func queryPageant(buf []byte) (result []byte, err error) {
 		return
 	}
 
-	// Adding process id in order to support parrallel requests.
+	// Adding process id in order to support parallel requests.
 	requestName := "WSLPageantRequest" + strconv.Itoa(os.Getpid())
 	mapName := fmt.Sprintf(requestName)
 
@@ -129,7 +129,7 @@ func main() {
 	flag.Parse()
 
 	if *verbose {
-		//Setting logput to file because we use stdout for communication
+		//Setting logout to file because we use stdout for communication
 		f, err := os.OpenFile(*logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err != nil {
 			log.Fatalf("error opening file: %v", err)
@@ -182,7 +182,7 @@ func handleGPG(path string) {
 
 	if n != 16 {
 		if *verbose {
-			log.Printf("Could not connet gpg: incorrect number of bytes for nonceRead incorrect number of bytes for nonce\n")
+			log.Printf("Could not connect gpg: incorrect number of bytes for nonceRead incorrect number of bytes for nonce\n")
 		}
 		return
 	}
@@ -190,7 +190,7 @@ func handleGPG(path string) {
 	gpgConn, err := net.Dial("tcp", fmt.Sprintf("localhost:%d", port))
 	if err != nil {
 		if *verbose {
-			log.Printf("Could not connet gpg: %v\n", err)
+			log.Printf("Could not connect gpg: %v\n", err)
 		}
 		return
 	}
