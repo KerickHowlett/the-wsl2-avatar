@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "ms-vscode.makefile-tools",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "golang.go"
+    ]
+}
